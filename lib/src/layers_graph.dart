@@ -36,6 +36,9 @@ class LayersGraph {
 
       // Remove [innerInjector] from [parentInjector] on [adjacencyList]
       adjacencyList[parentInjector]?.remove(innerInjector);
+
+      // Remove [innerInjector] from [parentInjector] on [injectorList]
+      parentInjector.injectorsList.remove(innerInjector);
     });
   }
 
@@ -64,8 +67,7 @@ class LayersGraph {
       return false;
     });
     if (injector == null) return null;
-    final bind =
-        injector.binds.firstWhere((bind) => bind.className == className);
+    final bind = injector.binds.firstWhere((bind) => bind.className == className);
     return MapEntry(injector, bind);
   }
 
