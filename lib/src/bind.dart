@@ -129,7 +129,7 @@ class Bind<T> {
 
         if (charStr == '<') {
           angleBracketCount++;
-        } else if (charStr == '>') {
+        } else if (angleBracketCount > 0 && charStr == '>') {
           angleBracketCount--;
         }
       }
